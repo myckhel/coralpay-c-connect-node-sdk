@@ -2,11 +2,13 @@
   "name": "coralpay-c-connect-node-sdk",
   "version": "0.5.4",
   "description": "This is a library/sdk for communicating to the CoralPay C-Connect payment service.",
-  "main": "lib/index.js",
+  "main": "build/index.js",
+  "source": "lib/index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 0",
     "lint": "eslint .",
+    "build": "microbundle-crl --no-compress --no-minify",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "git add -A src",
@@ -32,7 +34,8 @@
     "eslint": "6.2.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.18.2",
-    "husky": "2.7.0"
+    "husky": "2.7.0",
+    "microbundle-crl": "^0.13.11"
   },
   "dependencies": {
     "gpg": "0.6.0",
@@ -47,11 +50,8 @@
   "files": [
     "assets/**/*",
     "lib/**/*",
+    "build/**/*",
     "keymanager.js"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run format && npm run build"
-    }
-  }
+  "packageManager": "yarn@4.9.2"
 }
